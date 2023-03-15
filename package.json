@@ -29,6 +29,7 @@
     "lodash-es": "^4.17.21",
     "prettier": "^2.8.4",
     "stylelint": "^15.2.0",
+    "stylelint-config-standard": "^30.0.1",
     "svgaplayerweb": "^2.3.2",
     "swiper": "^5.4.5",
     "vant": "^2.12.53",
