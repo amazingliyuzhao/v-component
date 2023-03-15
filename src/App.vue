@@ -14,6 +14,9 @@
   export default class APP extends Vue {
     @Mutation
     setIsLowAn!: (is: boolean) => void;
+    created() {
+      console.log('test ci');
+    }
   }
 </script>
 
