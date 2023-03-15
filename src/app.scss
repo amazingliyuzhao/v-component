@@ -1,0 +1,75 @@
+html,
+body,
+header,
+footer,
+a,
+select,
+section,
+div,
+p,
+span,
+img,
+input,
+textarea,
+li,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+  border: none;
+  outline: none;
+  -webkit-touch-callout: none;
+  text-decoration: none;
+  list-style: none;
+  -webkit-user-select: none;
+}
+
+* {
+  box-sizing: border-box;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+html {
+  overscroll-behavior: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    font-size: 50px;
+    font-family: SFUIDisplay, "苹方", "San Francisco", "黑体", "Helvetica Neue",
+      Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.bgs {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.gl-perf {
+  z-index: 1000;
+}
+
+@font-face {
+  font-family: "DIN Regular";
+  font-weight: normal;
+  font-style: normal;
+}

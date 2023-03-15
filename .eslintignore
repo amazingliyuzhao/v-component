@@ -1,0 +1,4 @@
+vue.config.js
+config/*
+src/plugins/utils/*
+service-worker.js

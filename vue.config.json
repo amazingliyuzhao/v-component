@@ -1,0 +1,24 @@
+{
+  "apiPath": [
+    "/v1/vgift/service/*",
+    "/vgiftv2/cpcert/*",
+    "/vgiftv2/service/*",
+    "/vas/biz/api/valentine2023/*",
+    "/vas/biz/api/god/*",
+    "/vas/biz/api/common/*"
+  ],
+  "proxy": {
+    "enable": false,
+    "targetHost": ""
+  },
+  "sprite": {
+    "enable": true
+  },
+  "imagemin": {
+    "enable": true
+  },
+  "BundleAnalyzer": {
+    "enable": false
+  },
+  "jsCodeCoverage": 1
+}
