@@ -2,9 +2,9 @@
  *
  * @description 组件注册，方法，属性绑定
  */
-import Vue from "vue";
-import utils from "./utils/index";
-import filters from "./filters/index";
+import Vue from 'vue';
+import utils from './utils/index';
+import filters from './filters/index';
 
 const protos = { ...utils };
 

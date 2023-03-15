@@ -13,7 +13,7 @@ import {
   setFirstSendGift,
   base64Decode,
   timeFormatter,
-} from "./tool";
+} from './tool';
 
 export default {
   idleRun,

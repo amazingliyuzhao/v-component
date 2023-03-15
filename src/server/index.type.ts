@@ -2,9 +2,9 @@
 
 // 榜单类型
 export enum HomeRankType {
-  CP = "1",
-  GODDESS = "2",
-  STEAL = "3",
+  CP = '1',
+  GODDESS = '2',
+  STEAL = '3',
 }
 
 export interface IndexResData {

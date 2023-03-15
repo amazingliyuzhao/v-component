@@ -3,20 +3,18 @@
  */
 
 class RemoveHtmlBid {
-	apply(compiler) {
-		compiler.hooks.emit.tap('RemoveHtmlBid', compilation => {
+  apply(compiler) {
+    compiler.hooks.emit.tap('RemoveHtmlBid', (compilation) => {
+      let source = compilation.assets['index.html'].source();
+      source = source.replace(/\?_bid=\d+/gi, '');
+      // source = source.replace(/<link(?:.*?)href=[\"\'](.+?)[\"\'](?!<)(?:.*)\>(?:[\n\r\s]*?)(?:>)*/g, "")
 
-			let source = compilation.assets['index.html'].source();
-			source = source.replace(/\?_bid=\d+/ig, "");
-			// source = source.replace(/<link(?:.*?)href=[\"\'](.+?)[\"\'](?!<)(?:.*)\>(?:[\n\r\s]*?)(?:>)*/g, "")
-
-			compilation.assets['index.html'] = {
-				source: () => source,
-				size: () => source.length
-			}
-		})
-	}
+      compilation.assets['index.html'] = {
+        source: () => source,
+        size: () => source.length,
+      };
+    });
+  }
 }
-
 
 module.exports = new RemoveHtmlBid();

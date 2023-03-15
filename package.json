@@ -3,18 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "push": "node push.js"
+    "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx ./src",
+    "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
+    "lint:style": "stylelint --fix 'src/**/*.{css,scss,less}' --cache",
+    "lint:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:writeall": "prettier --write .",
+    "push": "node push.js",
+    "serve": "vue-cli-service serve"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
   },
   "dependencies": {
+    "@umijs/fabric": "^2.14.1",
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.6.5",
     "es6-promise": "^4.2.8",
     "fbemitter": "^2.1.1",
     "hi-base64": "^0.2.1",
     "lodash-es": "^4.17.21",
+    "prettier": "^2.8.4",
+    "stylelint": "^15.2.0",
     "svgaplayerweb": "^2.3.2",
     "swiper": "^5.4.5",
     "vant": "^2.12.53",
@@ -61,11 +75,5 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,vue}": [
-      "vue-cli-service lint",
-      "git add"
-    ]
   }
 }

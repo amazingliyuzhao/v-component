@@ -1,8 +1,8 @@
 /**
  * @description 打包开始前删除sourcemaps 文件夹
  */
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 function removeDir(dir) {
   let files = fs.readdirSync(dir);
   for (var i = 0; i < files.length; i++) {
@@ -21,8 +21,8 @@ function removeDir(dir) {
 
 class sourceMaps {
   apply(compiler) {
-    compiler.hooks.beforeRun.tap("RemoveSourcemaps", (compilation) => {
-      const sourcePath = path.resolve(process.cwd(), "sourcemaps");
+    compiler.hooks.beforeRun.tap('RemoveSourcemaps', (compilation) => {
+      const sourcePath = path.resolve(process.cwd(), 'sourcemaps');
       if (fs.existsSync(sourcePath)) {
         removeDir(sourcePath);
       }

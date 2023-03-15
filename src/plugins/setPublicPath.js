@@ -8,13 +8,13 @@ function getPublicPath() {
     location: { hostname, pathname },
   } = window;
   // eslint-disable-next-line no-useless-escape
-  let path = pathname.replace(/([^\.\/\\]+)\.([a-z]+)$/i, "");
-  if (path.indexOf("grey/") !== -1) {
+  let path = pathname.replace(/([^\.\/\\]+)\.([a-z]+)$/i, '');
+  if (path.indexOf('grey/') !== -1) {
     // 灰度发布域名处理
-    path = path.replace("grey/", "");
+    path = path.replace('grey/', '');
   }
 
-  return "/";
+  return '/';
 }
 
 const publicPath = getPublicPath();

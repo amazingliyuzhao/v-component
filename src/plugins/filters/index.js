@@ -2,8 +2,7 @@
  *
  * @description 全局过滤器
  */
-// eslint-disable-next-line import/no-extraneous-dependencies
-import base64 from "hi-base64";
+import base64 from 'hi-base64';
 
 export default {
   base64Decode(val) {
@@ -28,9 +27,9 @@ export default {
     if (a < 100000) {
       return a;
     }
-    const lastName = a >= 10000 * 10000 ? "亿" : "万";
+    const lastName = a >= 10000 * 10000 ? '亿' : '万';
     const calNum = a >= 10000 * 10000 ? 10000 * 10000 : 10000;
-    const strArr = String(a / calNum).split(".");
+    const strArr = String(a / calNum).split('.');
     let res = a / calNum;
     if (strArr.length > 1) {
       res = `${strArr[0]}.${strArr[1].slice(0, 2)}`;

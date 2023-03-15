@@ -1,9 +1,7 @@
-/* eslint-disable import/no-cycle */
-import Vue from "vue";
-import Vuex from "vuex";
-import IndexReq, { IndexResData } from "@/server";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import type { IndexResData } from '@/server';
 // @ts-ignore
-import { eventHub, EventNames } from "@/plugins/help";
 
 Vue.use(Vuex);
 
@@ -15,7 +13,7 @@ export default new Vuex.Store<IState>({
     indexData: null,
   },
   actions: {
-    async getIndexData({ state, commit }) {
+    async getIndexData() {
       console.log(1);
     },
   },

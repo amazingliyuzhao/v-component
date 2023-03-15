@@ -16,7 +16,11 @@ interface ResObj<T> {
   data: T;
 }
 
-function request<T>(url: string, data: any, options?: Record<string, any>): Promise<T> {
+function request<T>(
+  url: string,
+  data: any,
+  options?: Record<string, any>
+): Promise<T> {
   // console.log(url, data, options);
   return new Promise((resolve, reject) => {});
 }

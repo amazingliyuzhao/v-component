@@ -1,11 +1,11 @@
 /* eslint-disable */
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 // const { plugins } = require('./.think_config/plugins');
-const mergeConfig = require("./config/index");
+const mergeConfig = require('./config/index');
 
-const publicPath = process.env.NODE_ENV === "production" ? "./" : "/";
-const vueConfigPath = path.resolve(__dirname, "vue.config.json");
+const publicPath = process.env.NODE_ENV === 'production' ? './' : '/';
+const vueConfigPath = path.resolve(__dirname, 'vue.config.json');
 const vueConfigCoverage = JSON.parse(fs.readFileSync(vueConfigPath));
 
 // 不分站外还是站内  这个都是需要的
@@ -19,7 +19,7 @@ function getDevServerConfig() {
     const vueConfig = JSON.parse(fs.readFileSync(vueConfigPath));
     const { proxy, apiPath } = vueConfig;
     if (proxy.enable) {
-      if (typeof apiPath === "string") {
+      if (typeof apiPath === 'string') {
         Object.assign(config, {
           proxy: {
             [apiPath]: {
@@ -44,17 +44,17 @@ function getDevServerConfig() {
       Object.assign(config, {
         before(app) {
           app.post(apiPath, (req, res) => {
-            const mockPath = path.resolve(__dirname, "./mock");
+            const mockPath = path.resolve(__dirname, './mock');
             const filePath = path.join(mockPath, `${req.path}.json`);
             if (!fs.existsSync(filePath)) {
               res.json({
                 ec: 200,
-                em: "success",
+                em: 'success',
                 data: {},
               });
               return;
             }
-            fs.readFile(filePath, "utf8", (err, data) => {
+            fs.readFile(filePath, 'utf8', (err, data) => {
               if (err) {
                 console.log(`request error occured : ${req.path}`);
                 throw err;
@@ -74,46 +74,50 @@ const configCodeCoverage = +vueConfigCoverage.jsCodeCoverage; // 获取参数 - 
 let jsCodeUrl =
   configCodeCoverage !== 2
     ? configCodeCoverage === 3
-      ? "build/prod/index.html"
-      : "build/index.html"
-    : "build/test/index.html";
+      ? 'build/prod/index.html'
+      : 'build/index.html'
+    : 'build/test/index.html';
 const outputPathBuild =
-  configCodeCoverage !== 2 ? (configCodeCoverage === 3 ? "build/prod" : "build") : "build/test"; // 判断
-console.log("打包输出build路径：", outputPathBuild);
-console.log("打包输出HTML路径：", jsCodeUrl);
+  configCodeCoverage !== 2
+    ? configCodeCoverage === 3
+      ? 'build/prod'
+      : 'build'
+    : 'build/test'; // 判断
+console.log('打包输出build路径：', outputPathBuild);
+console.log('打包输出HTML路径：', jsCodeUrl);
 
 // 合并
 module.exports = mergeConfig({
   indexPath: path.resolve(__dirname, jsCodeUrl),
   publicPath,
   outputDir: outputPathBuild,
-  assetsDir: "static",
-  crossorigin: "anonymous",
+  assetsDir: 'static',
+  crossorigin: 'anonymous',
   productionSourceMap: true,
   configureWebpack: {
     plugins: [],
     performance: {
-      hints: "warning",
+      hints: 'warning',
       // 入口起点的最大体积
       maxEntrypointSize: 50000000,
       // 生成文件的最大体积
       maxAssetSize: 30000000,
       // 只给出 js 文件的性能提示
       assetFilter: function (assetFilename) {
-        return assetFilename.endsWith(".js");
+        return assetFilename.endsWith('.js');
       },
     },
     resolve: {
       modules: [
-        "node_modules",
-        "assets/images", // css在哪里能找到sprite图
+        'node_modules',
+        'assets/images', // css在哪里能找到sprite图
       ],
       alias: {
-        "@": path.resolve(__dirname, "src"),
-        "@img": path.resolve(__dirname, "src/assets/images"),
-        "@c": path.resolve(__dirname, "src/components"),
+        '@': path.resolve(__dirname, 'src'),
+        '@img': path.resolve(__dirname, 'src/assets/images'),
+        '@c': path.resolve(__dirname, 'src/components'),
       },
-      extensions: [".js", ".vue", ".scss"],
+      extensions: ['.js', '.vue', '.scss'],
     },
   },
   css: {
@@ -131,12 +135,12 @@ module.exports = mergeConfig({
   devServer: getDevServerConfig(),
   // swiper es兼容
   chainWebpack: (config) => {
-    config.resolve.alias.set("swiper$", "swiper/js/swiper.js");
+    config.resolve.alias.set('swiper$', 'swiper/js/swiper.js');
     config.module
-      .rule("sahder")
+      .rule('sahder')
       .test(/\.(frag|vert|glsl)$/)
-      .use("raw-loader")
-      .loader("raw-loader")
+      .use('raw-loader')
+      .loader('raw-loader')
       .end();
     // config.module
     //   .rule("svga")
