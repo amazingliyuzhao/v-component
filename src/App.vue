@@ -15,7 +15,7 @@
     @Mutation
     setIsLowAn!: (is: boolean) => void;
     created() {
-      console.log('test ci');
+      console.log('test ci-2');
     }
   }
 </script>
